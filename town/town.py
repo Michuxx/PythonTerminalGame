@@ -1,6 +1,7 @@
 import os
 
-def enterTown():
+def enterTown(hero):
+    from charStatistics.statistics import showStatistics
     print("----------------------------------")
     print("| 1. Kampania --------------------")
     print("| 2. postac ----------------------")
@@ -14,7 +15,7 @@ def enterTown():
             print("jesteś w kampanii")
         case "2":
             os.system('cls')
-            print("jesteś w postaci")
+            showStatistics(hero)
         case "3":
             os.system('cls')
             print("jesteś w plecaku")
