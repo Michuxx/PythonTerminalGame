@@ -1,11 +1,11 @@
-import classes.mainCharacter.mainCharacterClass as char
-import town.town as city
+from classes.mainCharacter.mainCharacterClass import Character
+from game_state import hero
 import os
 
-os.system('cls')
+if __name__ == "__main__":
 
-heroName = input("Wprowadź nazwę gracza: ")
-
-hero = char.Character(heroName)
-
-city.enterTown()
+    import town.town as city
+    os.system('cls')
+    heroName = input("Wprowadź nazwę gracza: ")
+    hero = Character(heroName)
+    city.enterTown(hero)
