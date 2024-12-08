@@ -1,3 +1,5 @@
+from classes.items.swordClass import Sword
+
 class Character:
     def __init__(self, name):
         self.name = name
@@ -12,4 +14,4 @@ class Character:
     helmet = {}
     chest = {}
     leggings = {}
-    backpack = {}
+    backpack = [Sword(1,10, "Wooden Sword"), Sword(5,12,"Stone Sword")]

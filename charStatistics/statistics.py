@@ -14,11 +14,11 @@ def showStatistics(hero):
     print(f"| Level: {hero.level}")
     print(f"| Exp: {hero.exp} / {hero.toLevelUpExp}")
     print("----------------------------------")
-    print("| 1. Wróć ------------------------")
+    print("| X. Wróć ------------------------")
     print("----------------------------------")
     statisticChoice = input()
     match statisticChoice:
-        case "1":
+        case "x":
             os.system('cls')
             enterTown(hero)
         case _:

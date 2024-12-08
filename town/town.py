@@ -2,6 +2,7 @@ import os
 
 def enterTown(hero):
     from charStatistics.statistics import showStatistics
+    from backpack.inventory import enterBackpack
     print("----------------------------------")
     print("| 1. Kampania --------------------")
     print("| 2. postac ----------------------")
@@ -18,7 +19,7 @@ def enterTown(hero):
             showStatistics(hero)
         case "3":
             os.system('cls')
-            print("jesteś w plecaku")
+            enterBackpack(hero)
         case "4":
             os.system('cls')
             print("jesteś w expowisko")
