@@ -1,4 +1,5 @@
 from classes.items.swordClass import Sword
+import items.swords.swords as swordItem
 
 class Character:
     def __init__(self, name):
@@ -10,8 +11,11 @@ class Character:
     defense = 0
     attack = 5 + level
     campaignLevel = 1
-    weapon = {}
-    helmet = {}
-    chest = {}
-    leggings = {}
-    backpack = [Sword(1,10, "Wooden Sword"), Sword(5,12,"Stone Sword")]
+    weapon = None
+    helmet = None
+    chest = None
+    leggings = None
+    backpack = [swordItem.stoneSword, swordItem.woodenSword]
+    def equipWeapon(self, weapon):
+        self.weapon = weapon
+        weapon.isEquipped = True

@@ -3,4 +3,6 @@ class Sword:
         self.minAttack = minAttack
         self.maxAttack = maxAttack
         self.name = name
-    isEquiped = False
+    isEquipped = False
+    itemType = "sword"
+   
