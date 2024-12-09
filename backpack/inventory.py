@@ -41,13 +41,13 @@ def enterBackpack(hero):
                 selected_item = hero.backpack[choice_index]
                 match selected_item.itemType:
                     case "weapon":
-                        equipmentChoice(selected_item, hero, hero.weapon)
+                        equipmentChoice(selected_item, hero, hero.weapon, hero.takeOffWeapon, hero.replaceWeapon, hero.equipWeapon, hero.deleteWeapon)
                     case "helmet":
-                        equipmentChoice(selected_item, hero, hero.helmet)
+                        equipmentChoice(selected_item, hero, hero.helmet, hero.takeOffHelmet, hero.replaceHelmet, hero.equipHelmet, hero.deleteHelmet)
                     case "chest":
-                        equipmentChoice(selected_item, hero, hero.chest)
+                        equipmentChoice(selected_item, hero, hero.chest, hero.takeOffChest, hero.replaceChest, hero.equipChest, hero.deleteChest)
                     case "leggings":
-                        equipmentChoice(selected_item, hero, hero.leggings)
+                        equipmentChoice(selected_item, hero, hero.leggings, hero.takeOffLeggings, hero.replaceLeggings, hero.equipLeggings, hero.deleteLeggings)
                 os.system('cls')
                 enterBackpack(hero)
             else:
@@ -59,7 +59,7 @@ def enterBackpack(hero):
             print("Nieprawidłowy wybór. Wprowadź numer przedmiotu lub 'X'.")
             enterBackpack(hero)
 
-def equipmentChoice(selected_item, hero, heroTypeOfEquipment):
+def equipmentChoice(selected_item, hero, heroTypeOfEquipment, takeOff, replace, equip, delete):
     os.system("cls")
     print(f"Co chcesz zrobić z {selected_item.name} ?")
     print("--------------------------------------------------")                   
@@ -74,19 +74,23 @@ def equipmentChoice(selected_item, hero, heroTypeOfEquipment):
     print("--------------------------------------------------")
     itemChoice = input()
     if selected_item.isEquipped and itemChoice == "1":
-        hero.takeOffWeapon(selected_item)
+        takeOff(selected_item)
+        hero.updateDefense()
         os.system('cls')
         enterBackpack(hero)
     elif not selected_item.isEquipped and heroTypeOfEquipment is not None and itemChoice == "1":
-        hero.replaceWeapon(selected_item, heroTypeOfEquipment)
+        replace(selected_item, heroTypeOfEquipment)
+        hero.updateDefense()
         os.system('cls')
         enterBackpack(hero)
     elif not selected_item.isEquipped and itemChoice == "1":
-        hero.equipWeapon(selected_item)
+        equip(selected_item)
+        hero.updateDefense()
         os.system('cls')
         enterBackpack(hero)
     elif itemChoice == "2":
-        hero.deleteWeapon(selected_item)
+        delete(selected_item)
+        hero.updateDefense()
         os.system('cls')
         enterBackpack(hero)
     elif itemChoice == "3":
