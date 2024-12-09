@@ -13,6 +13,22 @@ def showStatistics(hero):
     print(f"| Atak: {hero.attack}")
     print(f"| Level: {hero.level}")
     print(f"| Exp: {hero.exp} / {hero.toLevelUpExp}")
+    if hero.weapon != None:
+        print(f"| Broń: {hero.weapon.name}")
+    else:
+        print(f"| Broń: Brak")
+    if hero.helmet != None:
+        print(f"| Hełm: {hero.helmet.name}")
+    else:
+        print(f"| Hełm: Brak")
+    if hero.chest != None:
+        print(f"| Napierśnik: {hero.chest.name}")
+    else:
+        print(f"| Napierśnik: Brak")
+    if hero.leggings != None:
+        print(f"| Nogawice: {hero.leggings.name}")
+    else:
+        print(f"| Nogawice: Brak")
     print("----------------------------------")
     print("| X. Wróć ------------------------")
     print("----------------------------------")
@@ -24,4 +40,4 @@ def showStatistics(hero):
         case _:
             os.system('cls')
             print("Nieprawidłowa opcja... Wybierz jeszcze raz")
-            showStatistics()
+            showStatistics(hero)

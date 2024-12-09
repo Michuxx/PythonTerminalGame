@@ -4,6 +4,8 @@ def enterTown(hero):
     from charStatistics.statistics import showStatistics
     from backpack.inventory import enterBackpack
     print("----------------------------------")
+    print("-------------MIASTO---------------")
+    print("----------------------------------")
     print("| 1. Kampania --------------------")
     print("| 2. postac ----------------------")
     print("| 3. plecak ----------------------")
