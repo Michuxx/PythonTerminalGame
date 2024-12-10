@@ -7,4 +7,5 @@ if __name__ == "__main__":
     os.system('cls')
     heroName = input("Wprowadź nazwę gracza: ")
     hero = Character(heroName)
+    os.system('cls')
     city.enterTown(hero)
