@@ -1,34 +1,38 @@
 import os
 
+
 def enterBackpack(hero):
     from town.town import enterTown
     print("--------------------------------------------------")
-    print("----------------------Plecak----------------------")
+    print("----------------------\033[92mPlecak\033[0m----------------------")
     print("--------------------------------------------------")
     for index, item in enumerate(hero.backpack, start=1):
-        if item.itemType == "weapon":
-            if item.isEquipped == False:
-                print(f"| {index}. {item.name} | Obrażenia: {item.minAttack} - {item.maxAttack} ")
-            else:
-                print(f"| {index}. {item.name} | Obrażenia: {item.minAttack} - {item.maxAttack} | Założono")
-        if item.itemType =="helmet":
-            if item.isEquipped == False:
-                print(f"| {index}. {item.name} | Obrona: {item.defense} ")
-            else:
-                print(f"| {index}. {item.name} | Obrona: {item.defense} | Założono")
-        if item.itemType =="chest":
-            if item.isEquipped == False:
-                print(f"| {index}. {item.name} | Obrona: {item.defense} ")
-            else:
-                print(f"| {index}. {item.name} | Obrona: {item.defense} | Założono")
-        if item.itemType =="leggings":
-            if item.isEquipped == False:
-                print(f"| {index}. {item.name} | Obrona: {item.defense} ")
-            else:
-                print(f"| {index}. {item.name} | Obrona: {item.defense} | Założono")
+        match item.itemType:
+            case "weapon": 
+                if item.isEquipped == False:
+                    print(f"| {index}. \033[94m{item.name}\033[0m | Obrażenia: \033[91m{item.minAttack}\033[0m - \033[91m{item.maxAttack}\033[0m ")
+                else:
+                    print(f"| {index}. \033[94m{item.name}\033[0m | Obrażenia: \033[91m{item.minAttack}\033[0m - \033[91m{item.maxAttack}\033[0m | \033[36mZałożono\033[0m")
+            case "helmet": 
+                if item.isEquipped == False:
+                    print(f"| {index}. \033[96m{item.name}\033[0m | Obrona: \033[36m{item.defense}\033[0m ")
+                else:
+                    print(f"| {index}. \033[96m{item.name}\033[0m | Obrona: \033[36m{item.defense}\033[0m | \033[36mZałożono\033[0m")
+            case "chest": 
+                if item.isEquipped == False:
+                    print(f"| {index}. \033[95m{item.name}\033[0m | Obrona: \033[36m{item.defense}\033[0m ")
+                else:
+                    print(f"| {index}. \033[95m{item.name}\033[0m | Obrona: \033[36m{item.defense}\033[0m | \033[36mZałożono\033[0m")
+            case "leggings": 
+                if item.isEquipped == False:
+                    print(f"| {index}. \033[93m{item.name}\033[0m | Obrona: \033[36m{item.defense}\033[0m ")
+                else:
+                    print(f"| {index}. \033[93m{item.name}\033[0m | Obrona: \033[36m{item.defense}\033[0m | \033[36mZałożono\033[0m")
+            case "other":
+                    print(f"| {index}. \033[35m{item.name}\033[0m | Ilość: \033[97m{item.amount}\033[0m ")
     print("--------------------------------------------------")
-    print("| Wybierz przedmiot ------------------------------")
-    print("| X. Wróć ----------------------------------------")
+    print("| \033[4m\033[37mWybierz numer przedmiotu\033[0m ------------------------------")
+    print("| \033[4m\033[32mX. Wróć\033[0m ----------------------------------------")
     print("--------------------------------------------------")
     choice = input()
     if choice.lower() == 'x':
@@ -48,30 +52,32 @@ def enterBackpack(hero):
                         equipmentChoice(selected_item, hero, hero.chest, hero.takeOffChest, hero.replaceChest, hero.equipChest, hero.deleteChest)
                     case "leggings":
                         equipmentChoice(selected_item, hero, hero.leggings, hero.takeOffLeggings, hero.replaceLeggings, hero.equipLeggings, hero.deleteLeggings)
+                    case "other":
+                        otherEquipmentChoice(selected_item, hero, hero.deleteOtherItem)
                 os.system('cls')
                 enterBackpack(hero)
             else:
                 os.system('cls')
-                print("Nieprawidłowy numer przedmiotu. Spróbuj ponownie")
+                print("\033[31mNieprawidłowy numer przedmiotu. Spróbuj ponownie\033[0m")
                 enterBackpack(hero)
         except ValueError:
             os.system('cls')
-            print("Nieprawidłowy wybór. Wprowadź numer przedmiotu lub 'X'.")
+            print("\033[31mNieprawidłowy wybór. Wprowadź numer przedmiotu lub 'X'\033[0m")
             enterBackpack(hero)
 
 def equipmentChoice(selected_item, hero, heroTypeOfEquipment, takeOff, replace, equip, delete):
     os.system("cls")
-    print(f"Co chcesz zrobić z {selected_item.name} ?")
-    print("--------------------------------------------------")                   
+    print(f"Co chcesz zrobić z \033[1m{selected_item.name} \033[0m?")
+    print("------------------------------------------------------")                   
     if selected_item.isEquipped:
-        print("| 1. Zdejmij z eq ----------------------------")
+        print("| \033[4m\033[32m1. Zdejmij z eq\033[0m ------------------------------------")
     elif not selected_item.isEquipped and heroTypeOfEquipment == None:
-        print("| 1. Załóż -----------------------------------")
+        print("| \033[4m\033[32m1. Załóż\033[0m -------------------------------------------")
     else:
-        print("| 1. Podmień ---------------------------------")
-    print("| 2. Wyrzuć ----------------------------------")
-    print("| 3. Wróć ----------------------------------")
-    print("--------------------------------------------------")
+        print("| \033[4m\033[32m1. Podmień \033[0m ----------------------------------------")
+    print("| \033[4m\033[31m2. Wyrzuć\033[0m ------------------------------------------")
+    print("| \033[4m\033[33m3. Wróć\033[0m --------------------------------------------")
+    print("------------------------------------------------------")
     itemChoice = input()
     if selected_item.isEquipped and itemChoice == "1":
         takeOff(selected_item)
@@ -98,5 +104,25 @@ def equipmentChoice(selected_item, hero, heroTypeOfEquipment, takeOff, replace, 
         enterBackpack(hero)
     else:
         os.system('cls')
-        print("Nieprawidłowy wybór. Spróbuj ponownie")
+        print("\033[31mNieprawidłowy wybór. Spróbuj ponownie\033[0m")
+        enterBackpack(hero)
+
+def otherEquipmentChoice(selected_item, hero, delete):
+    os.system("cls")
+    print(f"Co chcesz zrobić z \033[1m{selected_item.name} \033[0m?")
+    print("------------------------------------------------------")
+    print("| \033[4m\033[31m1. Wyrzuć\033[0m ------------------------------------------")
+    print("| \033[4m\033[33m2. Wróć\033[0m --------------------------------------------")
+    print("------------------------------------------------------")
+    itemChoice = input()
+    if itemChoice == "1":
+        delete(selected_item)
+        os.system('cls')
+        enterBackpack(hero)
+    elif itemChoice == "2":
+        os.system('cls')
+        enterBackpack(hero)
+    else:
+        os.system('cls')
+        print("\033[31mNieprawidłowy wybór. Spróbuj ponownie\033[0m")
         enterBackpack(hero)

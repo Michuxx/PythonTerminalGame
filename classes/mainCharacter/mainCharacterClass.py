@@ -1,7 +1,8 @@
-import items.weapons.weapons as weaponItem
-import items.leggings.leggings as leggingsItem
-import items.helmets.helmets as helmetsItem
-import items.chests.chests as chestsItem
+import generatedItems.weapons.weapons as weaponItem
+import generatedItems.leggings.leggings as leggingsItem
+import generatedItems.helmets.helmets as helmetsItem
+import generatedItems.chests.chests as chestItem
+import generatedItems.others.other as otherItem
 
 class Character:
     def __init__(self, name):
@@ -16,15 +17,11 @@ class Character:
         self.chest = None
         self.leggings = None
 
-        # helm_def = self.helmet.defense if self.helmet is not None else 0
-        # chest_def = self.chest.defense if self.chest is not None else 0
-        # legs_def = self.leggings.defense if self.leggings is not None else 0
-
         self.defense = 0
         
         self.backpack = [weaponItem.stoneSword, weaponItem.woodenSword, leggingsItem.skinLegs, 
                          leggingsItem.ironLegs, helmetsItem.skinHelmet, helmetsItem.ironHelmet, 
-                         chestsItem.skinChest, chestsItem.ironChest]
+                         chestItem.skinChest, chestItem.ironChest, otherItem.iron, otherItem.grass ]
         self.attack = 5 + self.level
         self.campaignLevel = 1
 
@@ -108,4 +105,8 @@ class Character:
         if self.leggings == leggings:
             self.leggings = None
         filteredBackpack = filter(lambda item: item is not leggings, self.backpack)
+        self.backpack = list(filteredBackpack)
+    
+    def deleteOtherItem(self, otherItem):
+        filteredBackpack = filter(lambda item: item is not otherItem, self.backpack)
         self.backpack = list(filteredBackpack)
