@@ -4,6 +4,12 @@ import generatedItems.helmets.helmets as helmetsItem
 import generatedItems.chests.chests as chestItem
 import generatedItems.others.other as otherItem
 
+import classes.items.weaponClass as weapon
+import classes.items.otherClass as other
+import classes.items.leggingsClass as leggings
+import classes.items.chestClass as chest
+import classes.items.helmetClass as helmet
+
 class Character:
     def __init__(self, name):
         self.name = name
@@ -19,11 +25,21 @@ class Character:
 
         self.defense = 0
         
-        self.backpack = [weaponItem.stoneSword, weaponItem.woodenSword, leggingsItem.skinLegs, 
-                         leggingsItem.ironLegs, helmetsItem.skinHelmet, helmetsItem.ironHelmet, 
-                         chestItem.skinChest, chestItem.ironChest, otherItem.iron, otherItem.grass ]
+        self.backpack = [weapon.Weapon(1, 8, "Drewniany miecz", other.Other("Drewno", 3)), 
+                         leggings.Leggings(3, "skórzane spodnie", other.Other("Skóra", 3)), 
+                         helmet.Helmet(5, "skórzana czapka",other.Other("Skóra", 3)), 
+                         chest.Chest(10, "żelazny napierśnik", other.Other("Żelazo", 3)),
+                         other.Other("Żelazo", 12), 
+                         other.Other("Skóra", 15) ]
         self.attack = 5 + self.level
         self.campaignLevel = 1
+
+    def updateOtherItem(self,item):
+        for i in range(len(self.backpack) -1, -1, -1):
+            if(self.backpack[i].name == item.materials.name):
+                self.backpack[i].amount -= item.materials.amount
+                if self.backpack[i].amount == 0:
+                    self.backpack.remove(self.backpack[i])
 
     def updateDefense(self):
         helm_def = self.helmet.defense if self.helmet else 0

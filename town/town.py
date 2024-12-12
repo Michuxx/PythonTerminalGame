@@ -3,13 +3,15 @@ import os
 def enterTown(hero):
     from charStatistics.statistics import showStatistics
     from backpack.inventory import enterBackpack
+    from blacksmith.blacksmith import enterBlacksmith
     print("----------------------------------")
     print("-------------MIASTO---------------")
     print("----------------------------------")
     print("| 1. Kampania --------------------")
-    print("| 2. postac ----------------------")
-    print("| 3. plecak ----------------------")
-    print("| 4. expowisko -------------------")
+    print("| \033[95m2. Postac\033[0m ----------------------")
+    print("| \033[92m3. Plecak\033[0m ----------------------")
+    print("| \033[33m4. Kowal\033[0m -----------------------")
+    print("| 5. Expowisko -------------------")
     print("----------------------------------")
     choice = input()
     match choice:
@@ -24,8 +26,11 @@ def enterTown(hero):
             enterBackpack(hero)
         case "4":
             os.system('cls')
+            enterBlacksmith(hero)
+        case "5":
+            os.system('cls')
             print("jesteś w expowisko")
         case _:
             os.system('cls')
-            print("Nieprawidłowa opcja... Wybierz jeszcze raz")
-            enterTown()
+            print("\033[31mNieprawidłowa opcja... Wybierz jeszcze raz\033[0m")
+            enterTown(hero)
