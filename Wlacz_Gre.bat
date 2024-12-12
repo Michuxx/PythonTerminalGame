@@ -1,2 +1,4 @@
-python3 mainGame.py
+@echo off
+cls
+python mainGame.py
 pause
