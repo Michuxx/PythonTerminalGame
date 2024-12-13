@@ -15,3 +15,6 @@ class Chest:
     
     def increaseAmount(self):
         self.materials.amount += 6
+
+    def howMuchMore(self):
+        return 5 + self.defense

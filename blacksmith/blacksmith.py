@@ -52,7 +52,11 @@ def enterBlacksmith(hero):
 
 def upgradeItem(selected_item, hero):
     os.system("cls")
-    print(f"Czy na pewno chcesz ulepszyć \033[1m{selected_item.name}\033[0m z \033[1m+{selected_item.upgrade}\033[0m na \033[1m+{selected_item.upgrade + 1}\033[0m ?\nBędzie to kosztować \033[1m{selected_item.materials.amount}\033[0m \033[1m{selected_item.materials.name}\033[0m")
+    print(f"Czy na pewno chcesz ulepszyć \033[1m{selected_item.name}\033[0m z \033[1m+{selected_item.upgrade}\033[0m na \033[1m+{selected_item.upgrade + 1}\033[0m ?\nBędzie to kosztować: \033[1m{selected_item.materials.amount}\033[0m \033[1m{selected_item.materials.name}\033[0m")
+    if selected_item.itemType != "weapon":
+        print(f"Statystyki tego przedmiotu zmienią się z \033[33m{selected_item.defense}\033[0m >>>>> \033[92m{selected_item.howMuchMore()}\033[0m")
+    else:
+        print(f"Statystyki tego przedmiotu zmienią się z \033[33m{selected_item.minAttack}\033[0m - \033[33m{selected_item.maxAttack}\033[0m >>>>> \033[92m{selected_item.howMuchMoreMin()}\033[0m - \033[92m{selected_item.howMuchMoreMax()}\033[0m")
     print("------------------------------------------------------")
     print("| \033[4m\033[96m1. Ulepsz\033[0m ------------------------------------------")
     print("| \033[4m\033[33mX. Wróć\033[0m --------------------------------------------")

@@ -15,3 +15,6 @@ class Helmet:
 
     def increaseAmount(self):
         self.materials.amount += 6
+    
+    def howMuchMore(self):
+        return 3+ self.defense

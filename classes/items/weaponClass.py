@@ -17,4 +17,12 @@ class Weapon:
     
     def increaseAmount(self):
         self.materials.amount += 6
+
+    def howMuchMoreMin(self):
+        futureMinAttack = 2 + self.minAttack
+        return futureMinAttack
+    
+    def howMuchMoreMax(self):
+        futureMaxAttack = 5 + self.maxAttack
+        return futureMaxAttack
     
