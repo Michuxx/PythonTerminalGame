@@ -25,12 +25,12 @@ class Character:
 
         self.defense = 0
         
-        self.backpack = [weapon.Weapon(1, 8, "Drewniany miecz", other.Other("Drewno", 3)), 
+        self.backpack = [weapon.Weapon(1, 8, "Drewniany miecz", other.Other("Drewno", 3)), other.Other("Skóra", 15),
                          leggings.Leggings(3, "skórzane spodnie", other.Other("Skóra", 3)), 
                          helmet.Helmet(5, "skórzana czapka",other.Other("Skóra", 3)), 
                          chest.Chest(10, "żelazny napierśnik", other.Other("Żelazo", 3)),
                          other.Other("Żelazo", 12), 
-                         other.Other("Skóra", 15) ]
+                          ]
         self.attack = 5 + self.level
         self.campaignLevel = 1
 

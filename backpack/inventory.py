@@ -76,7 +76,7 @@ def equipmentChoice(selected_item, hero, heroTypeOfEquipment, takeOff, replace, 
     else:
         print("| \033[4m\033[32m1. Podmień \033[0m ----------------------------------------")
     print("| \033[4m\033[31m2. Wyrzuć\033[0m ------------------------------------------")
-    print("| \033[4m\033[33m3. Wróć\033[0m --------------------------------------------")
+    print("| \033[4m\033[33mX. Wróć\033[0m --------------------------------------------")
     print("------------------------------------------------------")
     itemChoice = input()
     if selected_item.isEquipped and itemChoice == "1":
@@ -99,7 +99,7 @@ def equipmentChoice(selected_item, hero, heroTypeOfEquipment, takeOff, replace, 
         hero.updateDefense()
         os.system('cls')
         enterBackpack(hero)
-    elif itemChoice == "3":
+    elif itemChoice == "x":
         os.system('cls')
         enterBackpack(hero)
     else:
@@ -112,14 +112,14 @@ def otherEquipmentChoice(selected_item, hero, delete):
     print(f"Co chcesz zrobić z \033[1m{selected_item.name} \033[0m?")
     print("------------------------------------------------------")
     print("| \033[4m\033[31m1. Wyrzuć\033[0m ------------------------------------------")
-    print("| \033[4m\033[33m2. Wróć\033[0m --------------------------------------------")
+    print("| \033[4m\033[33mX. Wróć\033[0m --------------------------------------------")
     print("------------------------------------------------------")
     itemChoice = input()
     if itemChoice == "1":
         delete(selected_item)
         os.system('cls')
         enterBackpack(hero)
-    elif itemChoice == "2":
+    elif itemChoice == "x":
         os.system('cls')
         enterBackpack(hero)
     else:

@@ -39,7 +39,7 @@ def enterBlacksmith(hero):
         try:
             choice_index = int(choice) - 1 
             if 0 <= choice_index < len(backpackWithoutOtherItems(hero)):
-                selected_item = hero.backpack[choice_index]
+                selected_item = backpackWithoutOtherItems(hero)[choice_index]
                 upgradeItem(selected_item, hero)
             else:
                 os.system('cls')
@@ -55,7 +55,7 @@ def upgradeItem(selected_item, hero):
     print(f"Czy na pewno chcesz ulepszyć \033[1m{selected_item.name}\033[0m z \033[1m+{selected_item.upgrade}\033[0m na \033[1m+{selected_item.upgrade + 1}\033[0m ?\nBędzie to kosztować \033[1m{selected_item.materials.amount}\033[0m \033[1m{selected_item.materials.name}\033[0m")
     print("------------------------------------------------------")
     print("| \033[4m\033[96m1. Ulepsz\033[0m ------------------------------------------")
-    print("| \033[4m\033[33m2. Wróć\033[0m --------------------------------------------")
+    print("| \033[4m\033[33mX. Wróć\033[0m --------------------------------------------")
     print("------------------------------------------------------")
     upgradeChoice = input()
     match upgradeChoice:
@@ -80,7 +80,7 @@ def upgradeItem(selected_item, hero):
                 os.system("cls")
                 print("\033[31mBrakuje ci materiałów do ulepszenia tego przedmiotu !\033[0m")
                 enterBlacksmith(hero)
-        case "2":
+        case "x":
             os.system('cls')
             enterBlacksmith(hero)
         case _:
