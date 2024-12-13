@@ -72,6 +72,7 @@ def upgradeItem(selected_item, hero):
                         selected_item.upgradeChest()
                 selected_item.updateStatistics()
                 hero.updateOtherItem(selected_item)
+                selected_item.increaseAmount()
                 hero.updateDefense()
                 os.system("cls")
                 print("\033[92mUlepszono przedmiot !\033[0m")

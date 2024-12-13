@@ -12,4 +12,6 @@ class Leggings:
 
     def upgradeLeggings(self):
         self.upgrade += 1
+        
+    def increaseAmount(self):
         self.materials.amount += 6

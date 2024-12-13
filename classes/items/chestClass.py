@@ -12,4 +12,6 @@ class Chest:
 
     def upgradeChest(self):
         self.upgrade += 1
+    
+    def increaseAmount(self):
         self.materials.amount += 6
